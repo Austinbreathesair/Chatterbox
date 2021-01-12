@@ -7,34 +7,35 @@
       </h2>
       <div class="chat-box"
            v-chat-scroll>
-        <b-list-group-item class="chat-item"
-                           v-for="chat in chats"
-                           :key="chat.key">
-          <div class="chat-status text-center"
-               v-if="chat.type==='join'||chat.type==='exit'">
-            <span class="chat-date">{{chat.sendDate}}</span>
-            <span class="chat-content-center">{{chat.message}}</span>
-          </div>
-          <div v-else>
-            <div class="chat-message text-right"
-                 v-if="chat.user === nickname">
-              <div class="right-bubble">
-                <span class="msg-name">Me</span>
-                <span class="msg-date">{{chat.sendDate}}</span>
-                <p text-wrap>{{chat.message}}</p>
+        <b-list-group>
+          <b-list-group-item class="chat-item"
+                             v-for="chat in chats"
+                             :key="chat.key">
+            <div class="chat-status text-center"
+                 v-if="chat.type==='join'||chat.type==='exit'">
+              <span class="chat-date">{{chat.sendDate}}</span>
+              <span class="chat-content-center">{{chat.message}}</span>
+            </div>
+            <div v-else>
+              <div class="chat-message text-right"
+                   v-if="chat.user === nickname">
+                <div class="right-bubble">
+                  <span class="msg-name">Me</span>
+                  <span class="msg-date">{{chat.sendDate}}</span>
+                  <p text-wrap>{{chat.message}}</p>
+                </div>
+              </div>
+              <div class="chat-message text-left"
+                   text-left
+                   v-if="chat.user !== nickname">
+                <div class="left-bubble">
+                  <span class="msg-name">{{chat.user}}</span>
+                  <span class="msg-date">{{chat.sendDate}}</span>
+                  <p text-wrap>{{chat.message}}</p>
+                </div>
               </div>
             </div>
-            <div class="chat-message text-left"
-                 text-left
-                 v-if="chat.user !== nickname">
-              <div class="left-bubble">
-                <span class="msg-name">{{chat.user}}</span>
-                <span class="msg-date">{{chat.sendDate}}</span>
-                <p text-wrap>{{chat.message}}</p>
-              </div>
-            </div>
-          </div>
-        </b-list-group-item>
+          </b-list-group-item>
         </b-list-group>
       </div>
       <footer class="sticky-footer">
